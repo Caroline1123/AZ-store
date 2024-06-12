@@ -70,7 +70,7 @@ function displayCart()
             // Retrieve the json object corresponding to product id.
             foreach ($products as $product) {
                 if ($product["id"] === $_SESSION["cart"]["product_id"][$i]) {
-                    echo "<div class='item border rounded d-flex'>";
+                    echo "<div class='item border rounded d-flex p-2'>";
                     echo "<img class='img-thumbnail' src=" . $product['image_url'] . " alt='Product Image'>";
                     echo "<div>";
                     echo $product["product"] . "<br>";
@@ -114,7 +114,7 @@ function displayCart()
 <body>
     <?php require 'partials/nav.php' ?>
     <?php require 'partials/footer-nav.php' ?>
-    <h3 class="m-3">Your Order </h3>
+    <h3 class="m-3 text-center">Your Order </h3>
     <div class="shopping-cart border rounded d-flex m-3 p-2">
         <div class="overview d-flex flex-column">
             <?php displayCart() ?>
