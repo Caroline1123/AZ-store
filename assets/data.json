@@ -1,0 +1,183 @@
+[
+    {
+      "id": 1,
+      "product": "Nike Air Max 270",
+      "price": 140,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 2,
+      "product": "Adidas Ultra Boost",
+      "price": 180,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 3,
+      "product": "Puma RS-X",
+      "price": 120,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 4,
+      "product": "New Balance 990v5",
+      "price": 175,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 5,
+      "product": "Reebok Club C 85",
+      "price": 85,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 6,
+      "product": "Asics Gel-Kayano 27",
+      "price": 160,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 7,
+      "product": "Under Armour HOVR Phantom",
+      "price": 150,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 8,
+      "product": "Converse Chuck Taylor All Star",
+      "price": 60,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 9,
+      "product": "Vans Old Skool",
+      "price": 70,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 10,
+      "product": "Jordan Air Jordan 1",
+      "price": 170,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 11,
+      "product": "Saucony Jazz Original",
+      "price": 80,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 12,
+      "product": "Brooks Ghost 13",
+      "price": 130,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 13,
+      "product": "Fila Disruptor II",
+      "price": 65,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 14,
+      "product": "Mizuno Wave Rider 24",
+      "price": 150,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 15,
+      "product": "Salomon Speedcross 5",
+      "price": 130,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 16,
+      "product": "Hoka One One Clifton 7",
+      "price": 150,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 17,
+      "product": "Skechers D'Lites",
+      "price": 65,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 18,
+      "product": "On Cloud X",
+      "price": 140,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 19,
+      "product": "Merrell Moab 2 Ventilator",
+      "price": 100,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 20,
+      "product": "La Sportiva Bushido II",
+      "price": 130,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 21,
+      "product": "Altra Lone Peak 4.5",
+      "price": 120,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 22,
+      "product": "Topo Athletic MT-3",
+      "price": 100,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 23,
+      "product": "North Face Ultra 109",
+      "price": 110,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 24,
+      "product": "Arc'teryx Norvan SL",
+      "price": 160,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 25,
+      "product": "Inov-8 Roclite G 275",
+      "price": 135,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 26,
+      "product": "Nike Pegasus Trail 2",
+      "price": 130,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 27,
+      "product": "Adidas Terrex Swift R2",
+      "price": 120,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 28,
+      "product": "Puma Calibrate Runner",
+      "price": 140,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 29,
+      "product": "New Balance Fresh Foam Hierro v5",
+      "price": 135,
+      "image_url": "../assets/images/shoe_one.png"
+    },
+    {
+      "id": 30,
+      "product": "Asics GT-2000 9",
+      "price": 120,
+      "image_url": "../assets/images/shoe_one.png"
+    }
+]
+  
