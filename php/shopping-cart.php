@@ -64,15 +64,6 @@ $SESSION["cart"] = [
 if (count($_SESSION['cart']['product_id']) == 0) {
     echo "no items in the cart";
 }
-
 ?>
 
-<body>
-    <h3>Your order</h3>
-
-    <div>
-
-
-    </div>
-
-</body>
+<?php require 'partials/nav.php' ?>
