@@ -2,13 +2,27 @@
 
 // This will have to be in the index.php file!!
 // Start a session if none is active to store cart data
-if (session_status() != PHP_SESSION_ACTIVE) {
+if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
+}
+// Also needs to be on index.php : creates an empty shopping cart if no cart existed
+if (!isset($_SESSION["cart"])) {
     $_SESSION["cart"] = [
         "product_id" => [],
         "quantity" => []
     ];
 }
+
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $product_id = intval($_POST['product_id']);
+//     $action = $_POST['action'];
+//     if ($_POST['action'] == 'add') {
+//         add_item($product_id);
+//     } elseif ($_POST['action'] == 'remove') {
+//         remove_item($product_id);
+//     }
+// }
 
 // Adds one item to the cart
 //Parameter : int :  product ID (must match data.json product ID)
@@ -45,17 +59,9 @@ function remove_item($product_id)
     }
 }
 
-// Some tests :-)
-add_item(1);
-add_item(2);
-add_item(1);
-add_item(25);
-
-// Shopping cart page should show : product img, product name, product price and quantity
-
 function displayTotal($total)
 {
-
+    // TO DO !
 }
 function displayCart()
 {
@@ -70,13 +76,24 @@ function displayCart()
             // Retrieve the json object corresponding to product id.
             foreach ($products as $product) {
                 if ($product["id"] === $_SESSION["cart"]["product_id"][$i]) {
-                    echo "<div class='item border rounded d-flex p-2'>";
-                    echo "<img class='img-thumbnail' src=" . $product['image_url'] . " alt='Product Image'>";
+                    echo "<div class='item border-bottom d-flex p-2'>";
+                    echo "<img class='rounded bg-light' src=" . $product['image_url'] . " alt='Product Image'>";
                     echo "<div>";
-                    echo $product["product"] . "<br>";
-                    echo $product["price"] . " € <br>";
-                    echo "Quantity: " . $_SESSION["cart"]["quantity"][$i] . "<br>";
-                    echo "TOTAL: " . $product["price"] * $_SESSION["cart"]["quantity"][$i] . " € <br>";
+                    echo "<p class='fw-bold'>" . $product["product"] . "</p>";
+                    echo "<p>" . $product["price"] * $_SESSION["cart"]["quantity"][$i] . " € </p>";
+                    echo "Quantity     
+                    <form method='post' class='cart-form d-inline'>
+                        <input type='hidden' name='product_id' value='" . $product["id"] . "'>
+                        <input type='hidden' name='action' value='remove'>
+                        <button class='cart-button btn btn-secondary rounded-circle p-1' type='submit'>-</button>
+                    </form>"
+                        . $_SESSION["cart"]["quantity"][$i] . "
+                    <form method='post' class='cart-form d-inline'>
+                        <input type='hidden' name='product_id' value='" . $product["id"] . "'>
+                        <input type='hidden' name='action' value='add'>
+                        <button class='cart-button btn btn-secondary rounded-circle  p-1' type='submit'>+</button>
+                    </form>";
+                    // echo "TOTAL: " . " € <br>";
                     echo "</div>";
                     echo "</div>";
                     $total += $product["price"] * $_SESSION["cart"]["quantity"][$i];
@@ -106,7 +123,7 @@ function displayCart()
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-
+    <script defer src="./../assets/js/script.js"></script>
     <script src="https://kit.fontawesome.com/8a245e3c89.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./../assets/css/styles.css">
@@ -119,11 +136,11 @@ function displayCart()
         <div class="overview d-flex flex-column">
             <?php displayCart() ?>
         </div>
-        <div class="summary p-2 border rounded">
+        <div class="summary p-4 rounded d-flex flex-column">
             <h4>Order Summary</h4>
-            Cart Total VAT excl.<br>
-            VAT total<br>
-            Cart Total VAT incl.
+            <p class="d-flex border-bottom">Subtotal<span class="total"></span></p>
+            <p class="d-flex border-bottom">VAT<span class="total"></span></p>
+            <p class="d-flex border-bottom">Total<span class="total"></span></p>
 
             <button>Checkout(not working)</button>
         </div>
