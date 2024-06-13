@@ -84,6 +84,29 @@ footer {
   gap: 1em;
 }
 .item img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
+}
+
+.cart-button {
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.card {
+  background-color: #1f2937;
+  border: none;
+}
+
+.card-title {
+  color: #fff;
+}
+
+.card-text {
+  color: #9ca3af;
 }/*# sourceMappingURL=styles.css.map */

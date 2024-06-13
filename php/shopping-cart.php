@@ -2,9 +2,9 @@
 
 // This will have to be in the index.php file!!
 // Start a session if none is active to store cart data
-if (session_status() !== PHP_SESSION_ACTIVE) {
+
     session_start();
-}
+
 // Also needs to be on index.php : creates an empty shopping cart if no cart existed
 if (!isset($_SESSION["cart"])) {
     $_SESSION["cart"] = [
@@ -13,16 +13,30 @@ if (!isset($_SESSION["cart"])) {
     ];
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['product_id'])) {
+        $product_id = intval($_POST['product_id']);
+        $action = isset($_POST['action']) ? $_POST['action'] : 'increase';
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $product_id = intval($_POST['product_id']);
-//     $action = $_POST['action'];
-//     if ($_POST['action'] == 'add') {
-//         add_item($product_id);
-//     } elseif ($_POST['action'] == 'remove') {
-//         remove_item($product_id);
-//     }
-// }
+        if ($action === 'increase') {
+            add_item($product_id);
+        } elseif ($action === 'decrease') {
+            decrease_item($product_id);
+        }
+
+        if (isset($_POST['ajax'])) {
+            echo json_encode(['status' => 'success']);
+            exit();
+        }
+    } elseif (isset($_POST['remove_product_id'])) {
+        remove_item((int)$_POST['remove_product_id']);
+
+        if (isset($_POST['ajax'])) {
+            echo json_encode(['status' => 'success']);
+            exit();
+        }
+    }
+}
 
 // Adds one item to the cart
 //Parameter : int :  product ID (must match data.json product ID)
@@ -37,25 +51,27 @@ function add_item($product_id)
     }
 }
 
-// Removes one item from the cart. 
-//Parameter : int :  product ID (must match data.json product ID)
-function remove_item($product_id)
-{
+function decrease_item($product_id) {
     $product_index = array_search($product_id, $_SESSION["cart"]["product_id"]);
-    if ($product_index === false) {
-        //should not happen that user tries to remove one item which is not already in the cart, but you never know... 
-    } else {
-        // If the item quantity is one, remove the product line entirely.
+    if ($product_index !== false) {
         if ($_SESSION["cart"]["quantity"][$product_index] === 1) {
-            unset($_SESSION["cart"]["quantity"][$product_index]);
-            unset($_SESSION["cart"]["product_id"][$product_index]);
-
-            $_SESSION["cart"]["product_id"] = array_values($_SESSION["cart"]["product_id"]);
-            $_SESSION["cart"]["quantity"] = array_values($_SESSION["cart"]["quantity"]);
-            // if item exists in the cart, decrease its quantity by 1
+            remove_item($product_id);
         } else {
             $_SESSION["cart"]["quantity"][$product_index] -= 1;
         }
+    }
+}
+
+// Removes one item from the cart. 
+//Parameter : int :  product ID (must match data.json product ID)
+
+function remove_item($product_id) {
+    $product_index = array_search($product_id, $_SESSION["cart"]["product_id"]);
+    if ($product_index !== false) {
+        unset($_SESSION["cart"]["quantity"][$product_index]);
+        unset($_SESSION["cart"]["product_id"][$product_index]);
+        $_SESSION["cart"]["product_id"] = array_values($_SESSION["cart"]["product_id"]);
+        $_SESSION["cart"]["quantity"] = array_values($_SESSION["cart"]["quantity"]);
     }
 }
 
@@ -68,6 +84,7 @@ function displayCart()
     $productsJson = file_get_contents('./../assets/data.json');
     $products = json_decode($productsJson, true);
     $total = 0;
+
     // Displays a default text if there's no item added to cart.
     if (count($_SESSION['cart']['product_id']) === 0) {
         echo "no item found in the cart";
@@ -76,31 +93,26 @@ function displayCart()
             // Retrieve the json object corresponding to product id.
             foreach ($products as $product) {
                 if ($product["id"] === $_SESSION["cart"]["product_id"][$i]) {
-                    echo "<div class='item border-bottom d-flex p-2'>";
-                    echo "<img class='rounded bg-light' src=" . $product['image_url'] . " alt='Product Image'>";
-                    echo "<div>";
-                    echo "<p class='fw-bold'>" . $product["product"] . "</p>";
-                    echo "<p>" . $product["price"] * $_SESSION["cart"]["quantity"][$i] . " € </p>";
-                    echo "Quantity     
-                    <form method='post' class='cart-form d-inline'>
-                        <input type='hidden' name='product_id' value='" . $product["id"] . "'>
-                        <input type='hidden' name='action' value='remove'>
-                        <button class='cart-button btn btn-secondary rounded-circle p-1' type='submit'>-</button>
-                    </form>"
-                        . $_SESSION["cart"]["quantity"][$i] . "
-                    <form method='post' class='cart-form d-inline'>
-                        <input type='hidden' name='product_id' value='" . $product["id"] . "'>
-                        <input type='hidden' name='action' value='add'>
-                        <button class='cart-button btn btn-secondary rounded-circle  p-1' type='submit'>+</button>
-                    </form>";
-                    // echo "TOTAL: " . " € <br>";
+                    echo "<div class='item border rounded d-flex mb-3'>";
+                    echo "<img class='img-thumbnail' src='" . $product['image_url'] . "' alt='Product Image' width='100' height='100'>";
+                    echo "<div class='p-2'>";
+                    echo $product["product"] . "<br>";
+                    echo $product["price"] . " € <br>";
+                    echo "Quantity: <span id='quantity_" . $product['id'] . "'>" . $_SESSION["cart"]["quantity"][$i] . "</span> ";
+                    echo "<button onclick='updateCart(" . $product['id'] . ", \"increase\")' class='btn btn-success btn-sm'>+</button> ";
+                    echo "<button onclick='updateCart(" . $product['id'] . ", \"decrease\")' class='btn btn-warning btn-sm'>-</button> ";
+                    echo "TOTAL: " . $product["price"] * $_SESSION["cart"]["quantity"][$i] . " € <br>";
+                    echo "<form method='post' action='shopping-cart.php' class='d-inline'>";
+                    echo "<input type='hidden' name='remove_product_id' value='" . $product['id'] . "'>";
+                    echo "<button type='submit' class='btn btn-danger btn-sm mt-2'>Remove</button>";
+                    echo "</form>";
                     echo "</div>";
                     echo "</div>";
                     $total += $product["price"] * $_SESSION["cart"]["quantity"][$i];
                 }
             }
         }
-        echo $total;
+        echo "<div class='total'>Total: " . $total . " €</div>";
     }
 }
 
@@ -127,6 +139,28 @@ function displayCart()
     <script src="https://kit.fontawesome.com/8a245e3c89.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./../assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function updateCart(productId, action) {
+            $.ajax({
+                url: 'shopping-cart.php',
+                type: 'POST',
+                data: {
+                    product_id: productId,
+                    action: action,
+                    ajax: true
+                },
+                success: function(response) {
+                    location.reload();
+                },
+                error: function() {
+                    alert("error updating cart");
+                }
+            });
+        }
+    </script>
+</head>
 
 <body>
     <?php require 'partials/nav.php' ?>
