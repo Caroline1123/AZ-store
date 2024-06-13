@@ -50,6 +50,10 @@ a.active {
   margin-right: auto;
 }
 
+.blue {
+  color: #2563EB;
+}
+
 footer {
   border-top: 1px solid #343434;
 }
