@@ -63,10 +63,21 @@ footer {
 .shopping-cart {
   gap: 1em;
 }
+@media screen and (max-width: 768px) {
+  .shopping-cart {
+    flex-direction: column;
+  }
+}
 
 .overview {
-  flex: 80%;
+  flex: 75%;
   gap: 1vh;
+}
+
+.summary {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+  justify-content: space-between;
 }
 
 .item {
@@ -75,17 +86,4 @@ footer {
 .item img {
   width: 100px;
   height: 100px;
-}
-
-.card {
-  background-color: #1f2937;
-  border: none;
-}
-
-.card-title {
-  color: #fff;
-}
-
-.card-text {
-  color: #9ca3af;
 }/*# sourceMappingURL=styles.css.map */
