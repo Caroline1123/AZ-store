@@ -1,11 +1,9 @@
 <?php
 
-require_once ("./cart-functions.php")
+session_start();
+require_once ("./cart-functions.php");
 
-    // Need to disable checkout button if page is checkout.php
-
-
-    ?>
+?>
 
 <!doctype html>
 <html lang="en">

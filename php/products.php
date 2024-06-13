@@ -1,3 +1,9 @@
+<?php
+// require "cart-functions.php";
+session_start();
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -26,20 +32,25 @@
             $.ajax({
                 url: './shopping-cart.php',
                 type: 'POST',
-                data: { product_id: productId },
+                data: {
+                    product_id: productId,
+                    ajax: true
+                },
                 success: function (response) {
                     alert('product added to cart!');
                 },
                 error: function () {
-                    alert('error : can't add to shopping cart');
+                    alert("error : can't add to shopping cart");
                 }
             });
         }
+
     </script>
 </head>
 
 <body>
     <?php require 'partials/nav.php'; ?>
+
     <main>
         <header>
             <?php
@@ -57,7 +68,6 @@
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo htmlspecialchars($product['product']); ?></h5>
                                 <p class="card-text">$<?php echo htmlspecialchars($product['price']); ?></p>
-                                <!-- Add to cart button -->
                                 <button onclick="addToCart(<?php echo $product['id']; ?>)" class="btn btn-primary">Add to
                                     Cart</button>
                             </div>
@@ -67,6 +77,7 @@
             </div>
         </div>
     </main>
+
 </body>
 
 </html>

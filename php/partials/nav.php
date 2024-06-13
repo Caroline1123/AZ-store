@@ -1,3 +1,7 @@
+<?php
+require_once ("cart-functions.php");
+?>
+
 <nav class="navbar navbar-expand-lg navbar-dark d-flex justify-content-between">
         <h1 class="az-store ms-3" href="#">AZ[store]</h1>
         <div class="container-fluid ">
@@ -16,8 +20,9 @@
                         </div>
                 </div>
         </div>
-        <div class="cart mx-3">
+        <div class="cart mx-3 position-relative">
                 <a class="nav-link" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                <span class="quantity-display position-absolute rounded-circle"><?php echo show_quantity(); ?></span>
         </div>
         <div class="login">
                 <a class="nav-link me-3" href="#">Login</a>

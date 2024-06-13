@@ -31,6 +31,20 @@ a.active {
   justify-content: space-around;
 }
 
+.quantity-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -10px;
+  right: -10px;
+  z-index: 1;
+  background-color: rgb(13, 109, 252);
+  color: white;
+  font-size: 0.8em;
+  width: 16px;
+  height: 16px;
+}
+
 .img-fluid {
   max-width: 20% !important;
   height: auto;
@@ -113,8 +127,8 @@ footer {
   background-color: rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
   justify-content: space-between;
-  flex: 20%;
-  min-width: 20%;
+  flex: 25%;
+  min-width: 25%;
   max-height: 60vh;
 }
 

@@ -1,4 +1,50 @@
-<?php require_once ("./cart-functions.php") ?>
+<?php
+session_start();
+
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
+require ('cart-functions.php');
+// Adds one item to the cart
+//Parameter : int :  product ID (must match data.json product ID)
+function add_item($product_id)
+{
+    $product_index = array_search($product_id, $_SESSION["cart"]["product_id"]);
+    if ($product_index === false) {
+        $_SESSION["cart"]["product_id"][] = $product_id;
+        $_SESSION["cart"]["quantity"][] = 1;
+    } else {
+        $_SESSION["cart"]["quantity"][$product_index] += 1;
+    }
+}
+
+function decrease_item($product_id)
+{
+    $product_index = array_search($product_id, $_SESSION["cart"]["product_id"]);
+    if ($product_index !== false) {
+        if ($_SESSION["cart"]["quantity"][$product_index] === 1) {
+            remove_item($product_id);
+        } else {
+            $_SESSION["cart"]["quantity"][$product_index] -= 1;
+        }
+    }
+}
+
+// Removes one item from the cart. 
+//Parameter : int :  product ID (must match data.json product ID)
+function remove_item($product_id)
+{
+    $product_index = array_search($product_id, $_SESSION["cart"]["product_id"]);
+    if ($product_index !== false) {
+        unset($_SESSION["cart"]["quantity"][$product_index]);
+        unset($_SESSION["cart"]["product_id"][$product_index]);
+        $_SESSION["cart"]["product_id"] = array_values($_SESSION["cart"]["product_id"]);
+        $_SESSION["cart"]["quantity"] = array_values($_SESSION["cart"]["quantity"]);
+    }
+}
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -18,6 +64,28 @@
     <script src="https://kit.fontawesome.com/8a245e3c89.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./../assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function updateCart(productId, action) {
+            $.ajax({
+                url: 'cart-functions.php',
+                type: 'POST',
+                data: {
+                    product_id: productId,
+                    action: action,
+                    ajax: true
+                },
+                success: function (response) {
+                    location.reload();
+                },
+                error: function () {
+                    alert("error updating cart");
+                }
+            });
+        }
+    </script>
+</head>
 
 <body>
     <?php require 'partials/nav.php' ?>
