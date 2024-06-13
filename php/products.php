@@ -27,10 +27,10 @@
                 url: './shopping-cart.php',
                 type: 'POST',
                 data: { product_id: productId },
-                success: function(response) {
+                success: function (response) {
                     alert('product added to cart!');
                 },
-                error: function() {
+                error: function () {
                     alert('error : can't add to shopping cart');
                 }
             });
@@ -40,32 +40,33 @@
 
 <body>
     <?php require 'partials/nav.php'; ?>
-    <?php require 'partials/footer-nav.php'; ?>
-
     <main>
         <header>
             <?php
-                $products = json_decode(file_get_contents('../assets/data.json'), true);
+            $products = json_decode(file_get_contents('../assets/data.json'), true);
             ?>
         </header>
 
         <div class="container mt-5">
             <div class="row">
                 <?php foreach ($products as $product): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <img src="<?php echo htmlspecialchars($product['image_url']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($product['product']); ?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo htmlspecialchars($product['product']); ?></h5>
-                            <p class="card-text">$<?php echo htmlspecialchars($product['price']); ?></p>
-                            <!-- Add to cart button -->
-                            <button onclick="addToCart(<?php echo $product['id']; ?>)" class="btn btn-primary">Add to Cart</button>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <img src="<?php echo htmlspecialchars($product['image_url']); ?>" class="card-img-top"
+                                alt="<?php echo htmlspecialchars($product['product']); ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo htmlspecialchars($product['product']); ?></h5>
+                                <p class="card-text">$<?php echo htmlspecialchars($product['price']); ?></p>
+                                <!-- Add to cart button -->
+                                <button onclick="addToCart(<?php echo $product['id']; ?>)" class="btn btn-primary">Add to
+                                    Cart</button>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </main>
 </body>
+
 </html>
