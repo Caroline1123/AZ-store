@@ -23,8 +23,8 @@
     </header>
 
     <main>
-        <div class="main-bottom">
-            <div class="about flex-column justify-content-center">
+        <div class="main-bottom mt-4" id="about">
+            <div class="about d-flex flex-column justify-content-center p-2">
                 <?php require('partials/main-about.php');
                 ?>
             </div>
