@@ -59,11 +59,32 @@ function remove_item($product_id)
     }
 }
 
-function displayTotal($total)
+function display_summary()
 {
-    // TO DO !
+    $productsJson = file_get_contents('./../assets/data.json');
+    $products = json_decode($productsJson, true);
+    $total = 0;
+    for ($i = 0; $i < count($_SESSION["cart"]["product_id"]); $i++) {
+        // Retrieve the json object corresponding to product id.
+        foreach ($products as $product) {
+            if ($product["id"] === $_SESSION["cart"]["product_id"][$i]) {
+                $total += $product["price"] * $_SESSION["cart"]["quantity"][$i];
+            }
+        }
+    }
+    echo '
+    <div class="summary p-4 rounded d-flex flex-column">
+        <h4>Order Summary</h4>
+        <p class=" total d-flex border-bottom">Subtotal<span>' . number_format($total, 2) . ' €</span></p>
+        <p class=" total d-flex border-bottom">VAT<span>' . number_format($total * 0.21, 2) . ' €</span></p>
+        <p class=" total d-flex border-bottom">Total<span>' . number_format($total * 1.21, 2) . ' €</span></p>';
+    if ($total > 0) {
+        echo "<a href='checkout.php'><button>Checkout</button></a>";
+    }
+    echo '</div>';
 }
-function displayCart()
+
+function display_cart()
 {
     $productsJson = file_get_contents('./../assets/data.json');
     $products = json_decode($productsJson, true);
@@ -101,10 +122,9 @@ function displayCart()
                 }
             }
         }
-        echo $total;
     }
 }
-// TO DO - Split logic so that functions can be called from elsewhere without adding the HTML (create shopping-cart view and shopping cart functions in 2 sep. folders)
+
 
 ?>
 
@@ -132,16 +152,9 @@ function displayCart()
     <h3 class="m-3 text-center">Your Order </h3>
     <div class="shopping-cart border rounded d-flex m-3 p-2">
         <div class="overview d-flex flex-column">
-            <?php displayCart() ?>
+            <?php display_cart() ?>
         </div>
-        <div class="summary p-4 rounded d-flex flex-column">
-            <h4>Order Summary</h4>
-            <p class="d-flex border-bottom">Subtotal<span class="total"></span></p>
-            <p class="d-flex border-bottom">VAT<span class="total"></span></p>
-            <p class="d-flex border-bottom">Total<span class="total"></span></p>
-
-            <button>Checkout</button>
-        </div>
+        <?php echo display_summary() ?>
     </div>
     <?php require 'partials/footer-nav.php' ?>
 </body>

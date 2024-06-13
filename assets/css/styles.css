@@ -88,6 +88,10 @@ footer {
   height: 120px;
 }
 
+.cart-form {
+  display: inline-flex;
+}
+
 .cart-button {
   padding: 0;
   width: 25px;
@@ -96,4 +100,21 @@ footer {
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
+}
+
+.total {
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #1f2937;
+  border: none;
+}
+
+.card-title {
+  color: #fff;
+}
+
+.card-text {
+  color: #9ca3af;
 }/*# sourceMappingURL=styles.css.map */
