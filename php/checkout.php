@@ -42,29 +42,30 @@ require_once ("./cart-functions.php")
                     <input type="radio" id="other" name="drone" value="other" />
                     <label for="other">Other</label>
                 </div>
-                <input class="form-control mb-3" type="text" id="first-name" placeholder="First Name">
-                <input class="form-control mb-3" type="text" id="last-name" placeholder="Last Name">
+                <input class="form-control mb-3" type="text" id="first-name" placeholder="First Name" required>
+                <input class="form-control mb-3" type="text" id="last-name" placeholder="Last Name" required>
                 <h6 class="my-3">Contact</h6>
                 <div class="phone-nr input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><img src="./../assets/images/phone.svg" alt="Phone"></span>
                     </div>
-                    <input class="form-control" type="text" id="phone-nr" value="+32 ">
+                    <input class="form-control" type="text" id="phone-nr" value="+32 " required>
                 </div>
-                <input class="form-control mb-3" type="email" id="email" placeholder="Email">
+                <input class="form-control mb-3" type="email" id="email" placeholder="Email" required>
                 <h6 class="my-3">Address</h6>
                 <div class="alert alert-warning d-inline-block p-2 mb-3" role="alert">
                     ! We only ship to Belgium at the moment
                 </div>
                 <div class="input-group">
                     <input class="postcode form-control mb-3 me-4 rounded" type="number" id="postcode"
-                        placeholder="Postcode" max="9999">
-                    <input class="city form-control mb-3 rounded" type="text" id="city" placeholder="City">
+                        placeholder="Postcode" max="9999" required>
+                    <input class="city form-control mb-3 rounded" type="text" id="city" placeholder="City" required>
                 </div>
                 <div class="input-group">
                     <input class="street form-control mb-3 me-4 rounded" type="text" id="street-nr"
-                        placeholder="Street Name">
-                    <input class="street-nr form-control mb-3 rounded" type="text" id="city" placeholder=" Street Nr">
+                        placeholder="Street Name" required>
+                    <input class="street-nr form-control mb-3 rounded" type="text" id="city" placeholder=" Street Nr"
+                        required>
                 </div>
                 <h5 class="mb-4 pt-3 border-top">Select a payment method</h5>
                 <div class="payment-methods d-flex flex-column">

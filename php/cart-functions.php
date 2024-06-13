@@ -73,6 +73,7 @@ function display_summary()
             }
         }
     }
+    // If total cost is above 200EUR, then no shipping fee.
     if ($total > 200) {
         $shipping = 0;
     } else {
@@ -84,7 +85,7 @@ function display_summary()
         <p class=" total d-flex border-bottom">Subtotal<span>' . number_format($total, 2) . ' €</span></p>
         <p class=" total d-flex border-bottom">Shipping<span>' . number_format($shipping, 2) . ' €</span></p>
         <p class=" total fw-bold d-flex border-bottom mt-4">Total<span>' . number_format($total + $shipping, 2) . ' €</span></p>';
-    if ($total > 0) {
+    if (($total > 0) && (basename($_SERVER['PHP_SELF']) != 'checkout.php')) {
         echo "<a href='checkout.php'><button class='btn btn-primary btn-lg w-100'>Checkout</button></a>";
     }
     echo '</div>';
