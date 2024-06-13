@@ -24,6 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+// Re-initializes the cart
+function clear_cart()
+{
+    $_SESSION["cart"] = [
+        "product_id" => [],
+        "quantity" => []
+    ];
+}
+
 // Adds one item to the cart
 //Parameter : int :  product ID (must match data.json product ID)
 function add_item($product_id)
@@ -87,7 +96,11 @@ function display_summary()
         <p class=" total fw-bold d-flex border-bottom mt-4">Total<span>' . number_format($total + $shipping, 2) . ' €</span></p>';
     if (($total > 0) && (basename($_SERVER['PHP_SELF']) != 'checkout.php')) {
         echo "<a href='checkout.php'><button class='btn btn-primary btn-lg w-100'>Checkout</button></a>";
+    } elseif (basename($_SERVER['PHP_SELF']) == 'checkout.php') {
+        echo "<a href='index.php'><button class='btn btn-primary btn-lg w-100'>Pay now</button></a>";
     }
+
+
     echo '</div>';
 }
 
