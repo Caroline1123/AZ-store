@@ -2,17 +2,9 @@
 
 // This will have to be in the index.php file!!
 // Start a session if none is active to store cart data
-
-session_start();
-
-// Also needs to be on index.php : creates an empty shopping cart if no cart existed
-if (!isset($_SESSION["cart"])) {
-    $_SESSION["cart"] = [
-        "product_id" => [],
-        "quantity" => []
-    ];
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
 }
-
 // Links form to modify quantity to proper function(add/ remove)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['product_id'])) {
@@ -131,7 +123,6 @@ function display_cart()
 {
     $productsJson = file_get_contents('./../assets/data.json');
     $products = json_decode($productsJson, true);
-    $total = 0;
 
     // Displays a default text if there's no item added to cart.
     if (count($_SESSION['cart']['product_id']) === 0) {
@@ -141,25 +132,26 @@ function display_cart()
             // Retrieve the json object corresponding to product id.
             foreach ($products as $product) {
                 if ($product["id"] === $_SESSION["cart"]["product_id"][$i]) {
-                    echo "<div class='item border rounded d-flex mb-3'>";
-                    echo "<img class='img-thumbnail' src='" . $product['image_url'] . "' alt='Product Image' width='100' height='100'>";
-                    echo "<div class='p-2'>";
-                    echo $product["product"] . "<br>";
-                    echo $product["price"] . " € <br>";
-                    echo "Quantity: <span id='quantity_" . $product['id'] . "'>" . $_SESSION["cart"]["quantity"][$i] . "</span> ";
-                    echo "<button onclick='updateCart(" . $product['id'] . ", \"increase\")' class='btn btn-success btn-sm'>+</button> ";
-                    echo "<button onclick='updateCart(" . $product['id'] . ", \"decrease\")' class='btn btn-warning btn-sm'>-</button> ";
-                    echo "TOTAL: " . $product["price"] * $_SESSION["cart"]["quantity"][$i] . " € <br>";
-                    echo "<form method='post' action='shopping-cart.php' class='d-inline'>";
-                    echo "<input type='hidden' name='remove_product_id' value='" . $product['id'] . "'>";
-                    echo "<button type='submit' class='btn btn-danger btn-sm mt-2'>Remove</button>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
-                    $total += $product["price"] * $_SESSION["cart"]["quantity"][$i];
+                    echo
+                        "
+                    <div class='item border rounded d-flex mb-1'>
+                    <img class='border rounded me-0' src='" . $product['image_url'] . "' alt='Product Image'>
+                    <div class='item-details p-2 d-flex flex-column'>
+                    <p class='fw-bold'>" . $product['product'] . "</p>
+                    <div class='item-quantity d-flex'>
+                    <button onclick='updateCart(" . $product['id'] . ", \"decrease\")' class='cart-button btn btn-warning btn-sm'>-</button>
+                    <span class='px-2' id='quantity_" . $product['id'] . "'>" . $_SESSION["cart"]["quantity"][$i] . "</span>
+                    <button onclick='updateCart(" . $product['id'] . ", \"increase\")' class='cart-button btn btn-success btn-sm'>+</button>
+                    </div>
+                    <p class='item-price pt-1'>" . $product["price"] * $_SESSION["cart"]["quantity"][$i] . " € </p>
+                    <form method='post' action='shopping-cart.php' class='d-inline'>
+                    <input type='hidden' name='remove_product_id' value='" . $product['id'] . "'>
+                    <button type='submit' class='btn btn-danger btn-sm mt-1'>Remove</button>
+                    </form>
+                    </div>
+                    </div>";
                 }
             }
         }
-        echo "<div class='total'>Total: " . $total . " €</div>";
     }
 }

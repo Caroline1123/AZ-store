@@ -130,7 +130,7 @@ footer {
 }
 
 .overview {
-  flex: 80%;
+  flex: 75%;
   gap: 1vh;
 }
 
@@ -149,6 +149,13 @@ footer {
 .item img {
   width: 120px;
   height: 120px;
+  background: white;
+  align-self: center;
+  margin-left: 1em;
+}
+
+.item-quantity {
+  box-sizing: border-box;
 }
 
 .cart-form {
@@ -157,12 +164,17 @@ footer {
 
 .cart-button {
   padding: 0;
-  width: 25px;
-  height: 25px;
+  width: 25px !important;
+  height: 25px !important;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
+}
+
+.product-price {
+  padding-bottom: 1px !important;
+  margin-bottom: 1px !important;
 }
 
 .total {

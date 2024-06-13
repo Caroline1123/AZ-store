@@ -51,5 +51,5 @@
         </div>
         <?php echo display_summary() ?>
     </div>
-    <!-- <?php require 'partials/footer-nav.php' ?> -->
+    <?php require 'partials/footer-nav.php' ?>
 </body>
