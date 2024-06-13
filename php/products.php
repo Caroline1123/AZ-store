@@ -53,7 +53,7 @@
     <main>
         <header>
             <?php
-                $products = json_decode(file_get_contents('../assets/data.json'), true);
+            $products = json_decode(file_get_contents('../assets/data.json'), true);
             ?>
         </header>
 
@@ -76,4 +76,5 @@
     </main>
 
 </body>
+
 </html>

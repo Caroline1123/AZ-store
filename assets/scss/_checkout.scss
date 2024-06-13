@@ -1,0 +1,46 @@
+.delivery-info {
+    input, .input-group, .alert{
+        max-width: 90%;
+    @include mobile {
+        max-width: 100%;
+    }
+    }
+}
+
+.phone-nr {
+    max-width: 50% !important;
+    @include mobile {
+        min-width: 100% !important;
+    }
+}
+
+.postcode, .street-nr {
+    max-width: 15% !important;
+    @include mobile {
+        min-width: 30% !important;
+    }
+}
+
+
+.gender > * {
+    padding-right:1em;
+}
+
+.payment-methods {
+    div {
+        width:50%;
+        align-items: center;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        @include mobile {
+            width: 100%;
+        }
+        span {
+            margin-left: auto;
+            img {
+                width: 40px;
+                height: auto;
+            }
+        }
+    }
+}

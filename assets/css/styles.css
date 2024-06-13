@@ -41,13 +41,48 @@ a.active {
   flex-direction: column;
   justify-content: center;
   justify-items: center;
+  text-align: justify;
+  -moz-text-align-last: center;
+       text-align-last: center;
 }
 
 .about p {
   max-width: 40%;
-  text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.blue {
+  color: #2563EB;
+}
+
+.clients {
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: center;
+  text-align: center;
+}
+
+.client-photo {
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover;
+  margin: 20px auto;
+}
+
+q {
+  font-weight: 300;
+  font-size: small;
+  text-align: justify;
+  -moz-text-align-last: center;
+       text-align-last: center;
 }
 
 footer {
@@ -60,17 +95,17 @@ footer {
   flex-direction: row;
 }
 
-.shopping-cart {
+.shopping-cart, .checkout {
   gap: 1em;
 }
 @media screen and (max-width: 768px) {
-  .shopping-cart {
+  .shopping-cart, .checkout {
     flex-direction: column;
   }
 }
 
 .overview {
-  flex: 75%;
+  flex: 80%;
   gap: 1vh;
 }
 
@@ -78,6 +113,9 @@ footer {
   background-color: rgba(255, 255, 255, 0.1);
   box-sizing: border-box;
   justify-content: space-between;
+  flex: 20%;
+  min-width: 20%;
+  max-height: 60vh;
 }
 
 .item {
@@ -88,6 +126,10 @@ footer {
   height: 120px;
 }
 
+.cart-form {
+  display: inline-flex;
+}
+
 .cart-button {
   padding: 0;
   width: 25px;
@@ -96,6 +138,10 @@ footer {
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
+}
+
+.total {
+  justify-content: space-between;
 }
 
 .card {
@@ -109,4 +155,54 @@ footer {
 
 .card-text {
   color: #9ca3af;
+}
+
+.delivery-info input, .delivery-info .input-group, .delivery-info .alert {
+  max-width: 90%;
+}
+@media screen and (max-width: 768px) {
+  .delivery-info input, .delivery-info .input-group, .delivery-info .alert {
+    max-width: 100%;
+  }
+}
+
+.phone-nr {
+  max-width: 50% !important;
+}
+@media screen and (max-width: 768px) {
+  .phone-nr {
+    min-width: 100% !important;
+  }
+}
+
+.postcode, .street-nr {
+  max-width: 15% !important;
+}
+@media screen and (max-width: 768px) {
+  .postcode, .street-nr {
+    min-width: 30% !important;
+  }
+}
+
+.gender > * {
+  padding-right: 1em;
+}
+
+.payment-methods div {
+  width: 50%;
+  align-items: center;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+@media screen and (max-width: 768px) {
+  .payment-methods div {
+    width: 100%;
+  }
+}
+.payment-methods div span {
+  margin-left: auto;
+}
+.payment-methods div span img {
+  width: 40px;
+  height: auto;
 }/*# sourceMappingURL=styles.css.map */

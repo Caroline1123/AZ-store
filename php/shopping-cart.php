@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 // This will have to be in the index.php file!!
@@ -120,6 +121,9 @@ function displayCart()
 // TO DO - Split logic so that functions can be called from elsewhere without adding the HTML (create shopping-cart view and shopping cart functions in 2 sep. folders)
 
 ?>
+=======
+<?php require_once ("./cart-functions.php") ?>
+>>>>>>> dev
 
 <!doctype html>
 <html lang="en">
@@ -164,20 +168,12 @@ function displayCart()
 
 <body>
     <?php require 'partials/nav.php' ?>
-    <?php require 'partials/footer-nav.php' ?>
     <h3 class="m-3 text-center">Your Order </h3>
     <div class="shopping-cart border rounded d-flex m-3 p-2">
         <div class="overview d-flex flex-column">
-            <?php displayCart() ?>
+            <?php display_cart() ?>
         </div>
-        <div class="summary p-4 rounded d-flex flex-column">
-            <h4>Order Summary</h4>
-            <p class="d-flex border-bottom">Subtotal<span class="total"></span></p>
-            <p class="d-flex border-bottom">VAT<span class="total"></span></p>
-            <p class="d-flex border-bottom">Total<span class="total"></span></p>
-
-            <button>Checkout(not working)</button>
-        </div>
+        <?php echo display_summary() ?>
     </div>
-
+    <!-- <?php require 'partials/footer-nav.php' ?> -->
 </body>
