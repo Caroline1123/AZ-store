@@ -85,6 +85,17 @@ q {
        text-align-last: center;
 }
 
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(3, 82, 49, 0.9);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: block;
+}
+
 footer {
   border-top: 1px solid #343434;
 }

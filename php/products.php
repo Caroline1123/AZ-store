@@ -25,8 +25,6 @@
 
     <script>
 
-        // AJAX function to add product to shoppingcart (need to check shopping-cart.php).
-
         function addToCart(productId) {
             $.ajax({
                 url: './shopping-cart.php',
@@ -36,26 +34,47 @@
                     ajax: true
                 },
                 success: function(response) {
-                    alert('product added to cart!');
+                    showNotification('Product added to cart!');
                 },
                 error: function() {
-                    alert("error : can't add to shopping cart");
+                    showNotification("Error: Can't add to shopping cart", true);
                 }
             });
         }
 
+        function showNotification(message, isError = false) {
+
+            var notification = document.createElement('div');
+            notification.className = isError ? 'notification error' : 'notification';
+            notification.textContent = message;
+
+
+            document.body.appendChild(notification);
+
+
+            setTimeout(function() {
+                $(notification).fadeOut('slow', function() {
+                    $(this).remove();
+                });
+            }, 3000);
+}
+
     </script>
+
 </head>
 
 <body>
-    <?php require 'partials/nav.php'; ?>
+
+    <header>
+        <?php require 'partials/nav.php'; ?>
+    </header>
 
     <main>
-        <header>
-            <?php
+
+        <?php
             $products = json_decode(file_get_contents('../assets/data.json'), true);
-            ?>
-        </header>
+        ?>
+
 
         <div class="container mt-5">
             <div class="row">
