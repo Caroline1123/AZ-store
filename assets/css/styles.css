@@ -41,17 +41,48 @@ a.active {
   flex-direction: column;
   justify-content: center;
   justify-items: center;
+  text-align: justify;
+  -moz-text-align-last: center;
+       text-align-last: center;
 }
 
 .about p {
   max-width: 40%;
-  text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
 .blue {
   color: #2563EB;
+}
+
+.clients {
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-items: center;
+  text-align: center;
+}
+
+.client-photo {
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover;
+  margin: 20px auto;
+}
+
+q {
+  font-weight: 300;
+  font-size: small;
+  text-align: justify;
+  -moz-text-align-last: center;
+       text-align-last: center;
 }
 
 footer {
