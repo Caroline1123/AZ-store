@@ -46,10 +46,10 @@ function remove_item($product_id)
 }
 
 // Some tests :-)
-add_item(1);
-add_item(2);
-add_item(1);
-add_item(25);
+//add_item(1);
+//add_item(2);
+//add_item(1);
+//add_item(25);
 
 // Shopping cart page should show : product img, product name, product price and quantity
 
