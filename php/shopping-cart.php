@@ -13,16 +13,16 @@ if (!isset($_SESSION["cart"])) {
     ];
 }
 
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $product_id = intval($_POST['product_id']);
-//     $action = $_POST['action'];
-//     if ($_POST['action'] == 'add') {
-//         add_item($product_id);
-//     } elseif ($_POST['action'] == 'remove') {
-//         remove_item($product_id);
-//     }
-// }
+// Links form to modify quantity to proper function(add/ remove)
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $product_id = intval($_POST['product_id']);
+    $action = $_POST['action'];
+    if ($_POST['action'] == 'add') {
+        add_item($product_id);
+    } elseif ($_POST['action'] == 'remove') {
+        remove_item($product_id);
+    }
+}
 
 // Adds one item to the cart
 //Parameter : int :  product ID (must match data.json product ID)
@@ -68,7 +68,8 @@ function displayCart()
     $productsJson = file_get_contents('./../assets/data.json');
     $products = json_decode($productsJson, true);
     $total = 0;
-    // Displays a default text if there's no item added to cart.
+    // Displays a default text if there's no item added to cart. 
+    // TO DO : make it a bit "prettier"
     if (count($_SESSION['cart']['product_id']) === 0) {
         echo "no item found in the cart";
     } else {
@@ -103,8 +104,6 @@ function displayCart()
         echo $total;
     }
 }
-
-// TO DO - add possibility to add / remove items from shopping cart.
 // TO DO - Split logic so that functions can be called from elsewhere without adding the HTML (create shopping-cart view and shopping cart functions in 2 sep. folders)
 
 ?>
@@ -130,7 +129,6 @@ function displayCart()
 
 <body>
     <?php require 'partials/nav.php' ?>
-    <?php require 'partials/footer-nav.php' ?>
     <h3 class="m-3 text-center">Your Order </h3>
     <div class="shopping-cart border rounded d-flex m-3 p-2">
         <div class="overview d-flex flex-column">
@@ -142,8 +140,8 @@ function displayCart()
             <p class="d-flex border-bottom">VAT<span class="total"></span></p>
             <p class="d-flex border-bottom">Total<span class="total"></span></p>
 
-            <button>Checkout(not working)</button>
+            <button>Checkout</button>
         </div>
     </div>
-
+    <?php require 'partials/footer-nav.php' ?>
 </body>
