@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 // Start a session if none is active to store cart data
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
@@ -14,7 +12,6 @@ if (!isset($_SESSION["cart"])) {
 }
 
 ?>
-
 
 <!doctype html>
 <html lang="en">

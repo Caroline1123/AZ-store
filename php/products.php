@@ -1,5 +1,4 @@
 <?php
-// require "cart-functions.php";
 session_start();
 ?>
 
@@ -38,6 +37,7 @@ session_start();
                 },
                 success: function (response) {
                     alert('product added to cart!');
+                    location.reload();
                 },
                 error: function () {
                     alert("error : can't add to shopping cart");

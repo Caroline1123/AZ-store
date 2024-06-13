@@ -115,40 +115,40 @@ function display_summary()
     echo '</div>';
 }
 
-function display_cart()
-{
-    $productsJson = file_get_contents('./../assets/data.json');
-    $products = json_decode($productsJson, true);
-    $total = 0;
+// function display_cart()
+// {
+//     $productsJson = file_get_contents('./../assets/data.json');
+//     $products = json_decode($productsJson, true);
+//     $total = 0;
 
-    // Displays a default text if there's no item added to cart.
-    if (count($_SESSION['cart']['product_id']) === 0) {
-        echo "no item found in the cart";
-    } else {
-        for ($i = 0; $i < count($_SESSION["cart"]["product_id"]); $i++) {
-            // Retrieve the json object corresponding to product id.
-            foreach ($products as $product) {
-                if ($product["id"] === $_SESSION["cart"]["product_id"][$i]) {
-                    echo "<div class='item border rounded d-flex mb-3'>";
-                    echo "<img class='img-thumbnail' src='" . $product['image_url'] . "' alt='Product Image' width='100' height='100'>";
-                    echo "<div class='p-2'>";
-                    echo $product["product"] . "<br>";
-                    echo $product["price"] . " € <br>";
-                    echo "Quantity: <span id='quantity_" . $product['id'] . "'>" . $_SESSION["cart"]["quantity"][$i] . "</span> ";
-                    echo "<button onclick='updateCart(" . $product['id'] . ", \"increase\")' class='btn btn-success btn-sm'>+</button> ";
-                    echo "<button onclick='updateCart(" . $product['id'] . ", \"decrease\")' class='btn btn-warning btn-sm'>-</button> ";
-                    echo "TOTAL: " . $product["price"] * $_SESSION["cart"]["quantity"][$i] . " € <br>";
-                    echo "<form method='post' action='shopping-cart.php' class='d-inline'>";
-                    echo "<input type='hidden' name='remove_product_id' value='" . $product['id'] . "'>";
-                    echo "<button type='submit' class='btn btn-danger btn-sm mt-2'>Remove</button>";
-                    echo "</form>";
-                    echo "</div>";
-                    echo "</div>";
-                    $total += $product["price"] * $_SESSION["cart"]["quantity"][$i];
-                }
-            }
-        }
-    }
-}
+//     // Displays a default text if there's no item added to cart.
+//     if (count($_SESSION['cart']['product_id']) === 0) {
+//         echo "no item found in the cart";
+//     } else {
+//         for ($i = 0; $i < count($_SESSION["cart"]["product_id"]); $i++) {
+//             // Retrieve the json object corresponding to product id.
+//             foreach ($products as $product) {
+//                 if ($product["id"] === $_SESSION["cart"]["product_id"][$i]) {
+//                     echo "<div class='item border rounded d-flex mb-3'>";
+//                     echo "<img class='img-thumbnail' src='" . $product['image_url'] . "' alt='Product Image' width='100' height='100'>";
+//                     echo "<div class='p-2'>";
+//                     echo $product["product"] . "<br>";
+//                     echo $product["price"] . " € <br>";
+//                     echo "Quantity: <span id='quantity_" . $product['id'] . "'>" . $_SESSION["cart"]["quantity"][$i] . "</span> ";
+//                     echo "<button onclick='updateCart(" . $product['id'] . ", \"increase\")' class='btn btn-success btn-sm'>+</button> ";
+//                     echo "<button onclick='updateCart(" . $product['id'] . ", \"decrease\")' class='btn btn-warning btn-sm'>-</button> ";
+//                     echo "TOTAL: " . $product["price"] * $_SESSION["cart"]["quantity"][$i] . " € <br>";
+//                     echo "<form method='post' action='shopping-cart.php' class='d-inline'>";
+//                     echo "<input type='hidden' name='remove_product_id' value='" . $product['id'] . "'>";
+//                     echo "<button type='submit' class='btn btn-danger btn-sm mt-2'>Remove</button>";
+//                     echo "</form>";
+//                     echo "</div>";
+//                     echo "</div>";
+//                     $total += $product["price"] * $_SESSION["cart"]["quantity"][$i];
+//                 }
+//             }
+//         }
+//     }
+// }
 
 ?>
