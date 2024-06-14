@@ -34,7 +34,7 @@ if (!isset($_SESSION["cart"])) {
 
 <body class="mx-5">
 
-    <header>
+    <header class="p-3">
         <?php require ('partials/nav.php');
         ?>
     </header>

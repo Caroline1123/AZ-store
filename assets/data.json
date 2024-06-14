@@ -157,25 +157,25 @@
     },
     {
       "id": 27,
-      "product": "Adidas Terrex Swift R2",
+      "product": "Adidas Terrex",
       "price": 120,
       "image_url": "../assets/images/shoe_one.png"
     },
     {
       "id": 28,
-      "product": "Puma Calibrate Runner",
+      "product": "Puma Calibrate",
       "price": 140,
       "image_url": "../assets/images/shoe_one.png"
     },
     {
       "id": 29,
-      "product": "New Balance Fresh Foam Hierro v5",
+      "product": "New Balance",
       "price": 135,
       "image_url": "../assets/images/shoe_one.png"
     },
     {
       "id": 30,
-      "product": "Asics GT-2000 9",
+      "product": "Asics GT-2000",
       "price": 120,
       "image_url": "../assets/images/shoe_one.png"
     }

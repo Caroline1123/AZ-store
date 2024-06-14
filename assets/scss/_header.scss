@@ -1,6 +1,7 @@
 header {
     background-color: #111827;
     color: #fff;
+    border-bottom: 1px solid #343434;
 }
 
 h1 {
@@ -21,7 +22,6 @@ a.active {
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
 }
 
 .quantity-display {
@@ -37,3 +37,15 @@ a.active {
     width: 19px;
     height:19px;
 }
+
+@media screen and (max-width: 768px) {
+    .cart {
+        display: none;
+    }
+
+    .login {
+        display: none;
+    }
+}
+    
+

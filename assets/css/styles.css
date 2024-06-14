@@ -7,6 +7,7 @@ body {
 header {
   background-color: #111827;
   color: #fff;
+  border-bottom: 1px solid #343434;
 }
 
 h1 {
@@ -28,7 +29,6 @@ a.active {
 .navbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
 }
 
 .quantity-display {
@@ -45,6 +45,14 @@ a.active {
   height: 19px;
 }
 
+@media screen and (max-width: 768px) {
+  .cart {
+    display: none;
+  }
+  .login {
+    display: none;
+  }
+}
 .img-fluid {
   max-width: 20% !important;
   height: auto;
@@ -231,15 +239,15 @@ footer {
   border: none;
 }
 
-.card-title {
+.card-title, .small-card-title {
   color: #fff;
 }
 
-.card-text {
+.card-text, .small-card-text {
   color: #9ca3af;
 }
 
-.last-product {
+.row-last-products {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -250,6 +258,7 @@ footer {
   flex-direction: column;
   justify-items: center;
   justify-content: center;
+  max-width: 20%;
 }
 
 .small-card-image {
@@ -260,13 +269,23 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  justify-items: center;
 }
 
 .small-card-content {
   display: flex;
   flex-direction: column;
   max-width: 50%;
+  justify-content: space-between;
+}
+
+h6 {
+  font-size: 0.8rem;
+}
+
+.small-card-button {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.6rem;
 }
 
 .delivery-info input, .delivery-info .input-group, .delivery-info .alert {

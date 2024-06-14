@@ -2,7 +2,7 @@
 require_once ("cart-functions.php");
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark d-flex justify-content-between">
+<nav class="navbar navbar-expand-md navbar-dark d-flex justify-content-between">
         <h1 class="az-store ms-3" href="#">AZ[store]</h1>
         <div class="container-fluid ">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

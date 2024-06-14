@@ -4,17 +4,16 @@
 }
 
 
-.card-title {
+.card-title, .small-card-title {
     color: #fff;
 }
 
-.card-text {
+.card-text, .small-card-text {
     color: #9ca3af;
 }
 
 //styles for the small cards on home page
-
-.last-product {
+.row-last-products {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -25,6 +24,7 @@
     flex-direction: column;
     justify-items: center;
     justify-content: center;
+    max-width: 20%;
 }
 
 .small-card-image {
@@ -35,11 +35,21 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    justify-items: center;
+    //justify-items: center;
 }
 
 .small-card-content {
     display: flex;
     flex-direction: column;
     max-width: 50%;
+    justify-content: space-between;
+}
+
+h6 {
+    font-size: 0.8rem;
+}
+
+.small-card-button {
+width: fit-content;
+font-size: 0.6rem;
 }
