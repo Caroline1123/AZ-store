@@ -112,7 +112,7 @@ function display_summary()
     if (($total > 0) && (basename($_SERVER['PHP_SELF']) != 'checkout.php')) {
         echo "<a href='checkout.php'><button class='btn btn-primary btn-lg w-100'>Checkout</button></a>";
     } elseif (basename($_SERVER['PHP_SELF']) == 'checkout.php') {
-        echo "<a href='index.php'><button class='btn btn-primary btn-lg w-100'>Pay now</button></a>";
+        echo "<a href='index.php'><button id='checkout-button' type='submit' class='btn btn-primary btn-lg w-100'>Pay now</button></a>";
     }
 
     echo '<div class="tooltiptext">Free Shipping over 200€.</div>';

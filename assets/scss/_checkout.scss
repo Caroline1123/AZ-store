@@ -7,7 +7,11 @@
     }
 }
 
-.phone-nr {
+.alert-primary {
+    margin: 0!important;
+}
+
+.phone-nr, #phone-nr-error {
     max-width: 50% !important;
     @include mobile {
         min-width: 100% !important;
@@ -43,4 +47,14 @@
             }
         }
     }
+}
+
+.input-group {
+    display: flex !important;
+    .alert {
+        display:flex;
+    }
+}
+.error {
+    display: flex;
 }

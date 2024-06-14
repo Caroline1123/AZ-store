@@ -11,6 +11,13 @@ if (!isset($_SESSION["cart"])) {
     ];
 }
 
+// If a successful order was placed , display successful alert
+$order_success = false;
+if (isset($_SESSION['order_success']) && $_SESSION['order_success']) {
+    $order_success = true;
+    unset($_SESSION['order_success']);
+}
+
 ?>
 
 <!doctype html>
@@ -29,7 +36,19 @@ if (!isset($_SESSION["cart"])) {
         rel="stylesheet">
 
     <script src="https://kit.fontawesome.com/8a245e3c89.js" crossorigin="anonymous"></script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            <?php if ($order_success): ?>
+                const success = document.querySelector("#successful-order");
+                success.classList.add("alert", "alert-success", "mt-2", "mx-3", "p-2");
+                success.innerHTML = "Thanks for your order!";
+                setTimeout(function () {
+                    success.classList.remove("alert", "alert-success", "mt-2", "mx-3", "p-2");
+                    success.innerHTML = "";
+                }, 2000);
+            <?php endif; ?>
+        });
+    </script>
     <link rel="stylesheet" href="./../assets/css/styles.css">
 
 <body>
@@ -41,6 +60,7 @@ if (!isset($_SESSION["cart"])) {
     </header>
 
     <main>
+        <div id="successful-order"></div>
         <div class="main-bottom mt-4" id="about">
             <div class="about d-flex flex-column justify-content-center p-2">
                 <?php require ('partials/main-about.php');

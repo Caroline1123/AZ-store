@@ -180,6 +180,11 @@ footer {
   justify-content: space-between;
 }
 
+.alert-success {
+  transition: ease 1s;
+  text-align: center;
+}
+
 .card {
   background-color: #1f2937;
   border: none;
@@ -202,11 +207,15 @@ footer {
   }
 }
 
-.phone-nr {
+.alert-primary {
+  margin: 0 !important;
+}
+
+.phone-nr, #phone-nr-error {
   max-width: 50% !important;
 }
 @media screen and (max-width: 768px) {
-  .phone-nr {
+  .phone-nr, #phone-nr-error {
     min-width: 100% !important;
   }
 }
@@ -243,38 +252,13 @@ footer {
   height: auto;
 }
 
-#tooltip {
-  position: relative;
-  cursor: help;
+.input-group {
+  display: flex !important;
 }
-#tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
+.input-group .alert {
+  display: flex;
 }
 
-.tooltiptext {
-  visibility: hidden;
-  width: 160px;
-  background-color: #570086;
-  color: wheat;
-  text-align: center;
-  border-radius: 8px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1000;
-  bottom: 105%;
-  left: 50%;
-  margin-left: -80px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #570086 transparent transparent transparent;
+.error {
+  display: flex;
 }/*# sourceMappingURL=styles.css.map */
