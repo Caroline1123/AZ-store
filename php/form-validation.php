@@ -60,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response = validate_form();
     if ($response['valid']) {
         clear_cart();
+        $_SESSION['order_success'] = true;
         echo json_encode([
             'success' => true,
             'redirect' => 'index.php'

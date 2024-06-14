@@ -23,6 +23,7 @@ checkoutForm.addEventListener("submit", (e) => {
       if (data.success) {
         // Handle success - e.g., redirect to another page
         window.location.href = data.redirect;
+        console.log("could display a message here ? ");
       } else {
         // Display errors
         for (let key in data.errors) {
