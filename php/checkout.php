@@ -2,6 +2,8 @@
 
 session_start();
 require_once ("./cart-functions.php");
+require_once ("./form-validation.php");
+
 
 ?>
 
@@ -41,44 +43,44 @@ require_once ("./cart-functions.php");
                         <input type="radio" id="other" name="drone" value="other" />
                         <label for="other">Other</label>
                     </div>
-                    <input class="form-control mb-3" type="text" maxlength="50" name="first-name" id="first-name"
+                    <input class="form-control mt-3" type="text" maxlength="50" name="first-name" id="first-name"
                         placeholder="First Name" required>
+                    <!-- <?php ($first_name) ?> -->
                     <div class="error" id="first-name-error"></div>
-                    <input class="form-control mb-3" type="text" maxlength="50" name="last-name" id="last-name"
+                    <input class="form-control mt-3" type="text" maxlength="50" name="last-name" id="last-name"
                         placeholder="Last Name" required>
                     <div class="error" id="last-name-error"></div>
                     <h6 class="my-3">Contact</h6>
-                    <div class="phone-nr input-group mb-3">
+                    <div class="phone-nr input-group mt-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><img src="./../assets/images/phone.svg" alt="Phone"></span>
                         </div>
                         <input class="form-control" type="text" name="phone-nr" id="phone-nr" maxlength="13"
                             value="+32 " required>
-                        <div class="error" id="phone-nr-error"></div>
                     </div>
-                    <input class="form-control mb-3" type="email" name="email" id="email" placeholder="Email" required>
+                    <div class="error" id="phone-nr-error"></div>
+                    <input class="form-control mt-3" type="email" name="email" id="email" placeholder="Email" required>
                     <div class="error" id="email-error"></div>
                     <h6 class="my-3">Address</h6>
-                    <div class="alert alert-primary d-inline-block p-2 mb-3" role="alert">
+                    <div class="alert alert-primary d-inline-block p-2 mt-3" role="alert">
                         Currently, we only offer shipping within Belgium.
                     </div>
                     <div class="input-group">
-                        <input class="postcode form-control mb-3 me-4 rounded" type="number" id="postcode"
+                        <input class="postcode form-control mt-3 me-4 rounded" type="number" id="postcode"
                             placeholder="Postcode" max="9999" required>
-                        <div class="error" id="postcode-error"></div>
-                        <input class="city form-control mb-3 rounded" type="text" name="city" id="city" maxlength="50"
+                        <input class="city form-control mt-3 rounded" type="text" name="city" id="city" maxlength="50"
                             placeholder="City" required>
                     </div>
                     <div class="error" id="city-error"></div>
                     <div class="input-group">
-                        <input class="street form-control mb-3 me-4 rounded" type="text" name="street-name"
+                        <input class="street form-control mt-3 me-4 rounded" type="text" name="street-name"
                             id="street-name" placeholder="Street Name" maxlength="100" required>
-                        <input class="street-nr form-control mb-3 rounded" type="text" name="street-nr" id="street-nr"
+                        <input class="street-nr form-control mt-3 rounded" type="text" name="street-nr" id="street-nr"
                             placeholder=" Street Nr" maxlength="10" required>
-                        <div class="error" id="street-name-error"></div>
-                        <div class="error" id="street-nr-error"></div>
                     </div>
-                    <h5 class="mb-4 pt-3 border-top">Select a payment method</h5>
+                    <div class="error" id="street-name-error"></div>
+                    <div class="error" id="street-nr-error"></div>
+                    <h5 class="mb-4 mt-2 pt-3 border-top">Select a payment method</h5>
                     <div class="payment-methods d-flex flex-column">
                         <div class="bancontact d-flex alert-light alert p-2">
                             <input type="radio" name="method" value="" checked>
