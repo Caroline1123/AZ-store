@@ -32,7 +32,7 @@ if (!isset($_SESSION["cart"])) {
 
     <link rel="stylesheet" href="./../assets/css/styles.css">
 
-<body>
+<body class="mx-5">
 
     <header>
         <?php require ('partials/nav.php');
@@ -40,9 +40,15 @@ if (!isset($_SESSION["cart"])) {
     </header>
 
     <main>
-        <div class="banner container-fluid d-flex flex-row p-2 my-3">
+        <div class="banner container-fluid d-flex flex-row my-3 p-0">
           <?php require('partials/banner.php');
           ?>
+        </div>
+        <div class="last-products my-3 pt-3">
+            <h5><span class="blue">Our </span>last products</h5>
+            <?php require('partials/last-products.php');
+          ?>
+            
         </div>
         <div class="main-bottom mt-4" id="about">
             <div class="about d-flex flex-column justify-content-center p-2">

@@ -65,20 +65,20 @@ q {
     color: #2563EB;
 }
 
-.btn {
+.button {
     background-image: linear-gradient(to right, #3A80F3, #1F3C8D);
     color: #fff;
     border: none;
     max-width: fit-content;
 }
 
-.btn:hover {
+.button:hover {
     border: 1px solid #fff;
 }
 
-.button-store:hover {
-    color: #fff;
-}
+// .button-store:hover {
+//     color: #fff;
+// }
 
 .banner {
     justify-items: center;

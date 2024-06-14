@@ -114,7 +114,7 @@ q {
   color: #2563EB;
 }
 
-.btn {
+.button {
   background-image: linear-gradient(to right, #3A80F3, #1F3C8D);
   color: #fff;
   border: none;
@@ -122,12 +122,8 @@ q {
   max-width: fit-content;
 }
 
-.btn:hover {
+.button:hover {
   border: 1px solid #fff;
-}
-
-.button-store:hover {
-  color: #fff;
 }
 
 .banner {
@@ -241,6 +237,36 @@ footer {
 
 .card-text {
   color: #9ca3af;
+}
+
+.last-product {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+}
+
+.small-card-image {
+  width: 10dvw;
+}
+
+.card-body-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+}
+
+.small-card-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
 }
 
 .delivery-info input, .delivery-info .input-group, .delivery-info .alert {

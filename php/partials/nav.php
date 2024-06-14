@@ -25,6 +25,6 @@ require_once ("cart-functions.php");
                 <span class="quantity-display position-absolute rounded-circle"><?php echo show_quantity(); ?></span>
         </div>
         <div class="login">
-                <a class="nav-link me-3" href="#">Login</a>
+                <a class="nav-link" href="#">Login</a>
         </div>
 </nav>
