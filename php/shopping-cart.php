@@ -14,7 +14,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <!-- <script defer src="./../assets/js/script.js"></script> -->
     <script src="https://kit.fontawesome.com/8a245e3c89.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./../assets/css/styles.css">

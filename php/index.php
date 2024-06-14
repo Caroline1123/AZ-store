@@ -56,10 +56,8 @@ if (isset($_SESSION['order_success']) && $_SESSION['order_success']) {
 
 <body class="mx-5">
 
-    <header class="p-3">
-        <?php require ('partials/nav.php');
-        ?>
-    </header>
+    <?php require ('partials/nav.php');
+    ?>
 
     <main>
         <div id="successful-order"></div>

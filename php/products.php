@@ -66,9 +66,7 @@ session_start();
 
 <body>
 
-    <header>
-        <?php require 'partials/nav.php'; ?>
-    </header>
+    <?php require 'partials/nav.php'; ?>
 
     <main>
 
