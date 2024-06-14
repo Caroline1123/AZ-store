@@ -7,6 +7,7 @@ body {
 header {
   background-color: #111827;
   color: #fff;
+  border-bottom: 1px solid #343434;
 }
 
 h1 {
@@ -28,7 +29,6 @@ a.active {
 .navbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
 }
 
 .quantity-display {
@@ -45,6 +45,14 @@ a.active {
   height: 19px;
 }
 
+@media screen and (max-width: 768px) {
+  .cart {
+    display: none;
+  }
+  .login {
+    display: none;
+  }
+}
 .img-fluid {
   max-width: 20% !important;
   height: auto;
@@ -108,6 +116,52 @@ q {
   padding: 10px 20px;
   border-radius: 5px;
   display: block;
+}
+
+.nav-link:hover {
+  color: #2563EB;
+}
+
+.button {
+  background-image: linear-gradient(to right, #3A80F3, #1F3C8D);
+  color: #fff;
+  border: none;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+.button:hover {
+  border: 1px solid #fff;
+}
+
+.banner {
+  justify-items: center;
+  justify-content: space-between;
+}
+
+.banner-text {
+  font-size: 5dvw;
+  text-align: left !important;
+}
+
+.banner-element {
+  width: 50dvw;
+  justify-content: center;
+  justify-items: center;
+}
+
+.banner-img {
+  width: 40dvw;
+  z-index: 1;
+  position: relative;
+}
+
+.bg-text {
+  position: absolute;
+  -webkit-text-stroke: 2px #3C3F46;
+  color: transparent;
+  font-weight: 600;
+  font-size: 20dvw;
 }
 
 footer {
@@ -196,12 +250,53 @@ footer {
   border: none;
 }
 
-.card-title {
+.card-title, .small-card-title {
   color: #fff;
 }
 
-.card-text {
+.card-text, .small-card-text {
   color: #9ca3af;
+}
+
+.row-last-products {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  max-width: 20%;
+}
+
+.small-card-image {
+  width: 10dvw;
+}
+
+.card-body-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.small-card-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  justify-content: space-between;
+}
+
+h6 {
+  font-size: 0.8rem;
+}
+
+.small-card-button {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.6rem;
 }
 
 .delivery-info input, .delivery-info .input-group, .delivery-info .alert {
