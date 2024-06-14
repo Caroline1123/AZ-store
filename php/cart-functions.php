@@ -104,10 +104,10 @@ function display_summary()
         $shipping = 16;
     }
     echo '
-    <div class="summary p-4 rounded d-flex flex-column">
+    <div id="tooltip" class="summary p-4 rounded d-flex flex-column">
         <h4 class="mb-4 text-center">Summary</h4>
         <p class="total d-flex border-bottom">Subtotal<span>' . number_format($total, 2) . ' €</span></p>
-        <p class="total d-flex border-bottom">Shipping<span>' . number_format($shipping, 2) . ' €</span></p>
+        <p class="total d-flex border-bottom">Shipping &#9432;<span>' . number_format($shipping, 2) . ' €</span></p>
         <p class="total fw-bold d-flex border-bottom mt-4">Total<span>' . number_format($total + $shipping, 2) . ' €</span></p>';
     if (($total > 0) && (basename($_SERVER['PHP_SELF']) != 'checkout.php')) {
         echo "<a href='checkout.php'><button class='btn btn-primary btn-lg w-100'>Checkout</button></a>";
@@ -115,6 +115,7 @@ function display_summary()
         echo "<a href='index.php'><button class='btn btn-primary btn-lg w-100'>Pay now</button></a>";
     }
 
+    echo '<div class="tooltiptext">Free Shipping over 200€.</div>';
 
     echo '</div>';
 }

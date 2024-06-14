@@ -35,7 +35,7 @@ session_start();
                 },
                 success: function (response) {
                     showNotification('Product added to cart!');
-                    location.reload();
+                    $( "#cartQuantity" ).load(window.location.href + " #cartQuantity" );
                 },
                 error: function () {
                     showNotification("Error: Can't add to shopping cart", true);
@@ -96,6 +96,12 @@ session_start();
             </div>
         </div>
     </main>
+
+
+    <footer>
+        <?php require ('partials/footer-nav.php');
+        ?>
+    </footer>
 
 </body>
 
