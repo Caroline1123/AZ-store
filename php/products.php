@@ -94,10 +94,8 @@ session_start();
             </div>
         </div>
     </main>
-    <footer>
-        <?php require ('partials/footer-nav.php');
-        ?>
-    </footer>
+    <?php require ('partials/footer-nav.php');
+    ?>
 </body>
 
 </html>
