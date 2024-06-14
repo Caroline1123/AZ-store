@@ -43,9 +43,12 @@ if (isset($_SESSION['order_success']) && $_SESSION['order_success']) {
                 success.classList.add("alert", "alert-success", "mt-2", "mx-3", "p-2");
                 success.innerHTML = "Thanks for your order!";
                 setTimeout(function () {
-                    success.classList.remove("alert", "alert-success", "mt-2", "mx-3", "p-2");
-                    success.innerHTML = "";
-                }, 2000);
+                    success.style.transition = "opacity 0.5s";
+                    success.style.opacity = "0";
+                    success.addEventListener("transitionend", function () {
+                        success.remove();
+                    });
+                }, 3000);
             <?php endif; ?>
         });
     </script>
