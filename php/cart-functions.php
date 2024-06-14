@@ -125,7 +125,10 @@ function display_cart()
 
     // Displays a default text if there's no item added to cart.
     if (count($_SESSION['cart']['product_id']) === 0) {
-        echo "no item found in the cart";
+        echo "<div class='empty-cart d-flex flex-column'>
+        <h5 class='mb-4'>Looks like your basket is empty.</h5>
+        <a href='products.php'><button class='btn btn-primary' >Keep shopping</button></a>
+        </div>";
     } else {
         for ($i = 0; $i < count($_SESSION["cart"]["product_id"]); $i++) {
             // Retrieve the json object corresponding to product id.
