@@ -16,7 +16,7 @@
   
   <body>
     
-    <header>
+    <header class="position-static">
         <!-- <h1>AZ[store]</h1> -->
         <?php require('partials/nav.php');
         ?>
